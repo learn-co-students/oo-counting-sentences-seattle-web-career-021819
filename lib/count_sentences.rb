@@ -15,10 +15,11 @@ class String
   end
 
   def count_sentences
-    if self.include?("!!")
-      self.count(".")
-    else
-      self.count(".") + self.count("?")
-    end
+    arr = self.split(" ")
+    arr.select do |word|
+      word.end_with?(".") ||
+      word.end_with?("?") ||
+      word.end_with?("!")
+    end.length
   end
 end
